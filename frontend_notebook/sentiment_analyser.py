@@ -15,6 +15,7 @@ from dash import html
 from dash.dependencies import Input, Output, State
 from google.cloud import language_v1 as language
 
+
 # Set display row/column to show all data
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
@@ -65,7 +66,7 @@ def sentiment_analyzer_orchestrator():
     from pathlib import Path
     folder_path = "articles"
     for article in Path(folder_path).glob('*'):
-        text = article.read_text()
+        text = article.read_text(encoding='utf-8')
         # print(text)
         sentiments = analyze_text_sentiment(text)
 
